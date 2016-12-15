@@ -21,9 +21,12 @@
   user: user_input
   passwd: passwd_input
   recipient: recipient_input
+  betreff: betreff_input
+  nachricht: nachricht_input
 
 
   GridLayout:
+
     cols: 2
     Label:
       text: "Username: "
@@ -44,9 +47,24 @@
       id: recipient_input
       multiline: False
 
+    Label:
+      text: "Betreff: "
+    TextInput:
+      id: betreff_input
 
+    Label:
+      size_hint: 2, 2
+      text: "Nachricht: "
+    TextInput:
+      size_hint: 2, 2
+      id: nachricht_input
 
-
+    Button:
+      text: "Zurück zum Hauptschirm"
+      on_press: root.manager.current = "Main"
+    Button:
+      text: "Nachricht senden!"
+      on_press: root.sendmail()
 
 
 
@@ -57,7 +75,7 @@
   mail_screen: mail_screen
 
   MainScreen:
-    id:main_screen
+    id: main_screen
     name: "Main"
     manager: screen_manager
 
