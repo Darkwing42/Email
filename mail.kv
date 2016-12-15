@@ -1,0 +1,67 @@
+<MainScreen>:
+  BoxLayout:
+    orientation: "vertical"
+
+    Label:
+      size_hint: 1, None
+      text: "[b]Willkommen, bitte auswählen was sie gerne tun möchten? [/b]"
+      markup: True
+    BoxLayout:
+      Button:
+        size_hint: 1, None
+        text: "Mail schreiben"
+        on_press: root.manager.current = "Mail"
+      Button:
+        size_hint: 1, None
+        text: "Test Button"
+
+
+
+<MailScreen>:
+  user: user_input
+  passwd: passwd_input
+  recipient: recipient_input
+
+
+  GridLayout:
+    cols: 2
+    Label:
+      text: "Username: "
+
+    TextInput:
+      id: user_input
+      multiline: False
+    Label:
+      text: "Passwort: "
+    TextInput:
+      id: passwd_input
+      multiline: False
+      password: True
+
+    Label:
+      text: "Empfänger: "
+    TextInput:
+      id: recipient_input
+      multiline: False
+
+
+
+
+
+
+
+<Manager>:
+  id: screen_manager
+
+  main_screen: main_screen
+  mail_screen: mail_screen
+
+  MainScreen:
+    id:main_screen
+    name: "Main"
+    manager: screen_manager
+
+  MailScreen:
+    id: mail_screen
+    name: "Mail"
+    manager:"screen_manager"
